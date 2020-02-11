@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import DataPersistence
 
 class TabBarController: UITabBarController {
+    
     
     private lazy var viewController: ViewController = {
         let vc = ViewController()
         vc.tabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "questionmark"), tag: 0)
+        return vc
+    }()
+    
+    private lazy var cardCreateViewController: CardCreateViewController = {
+        let vc = CardCreateViewController()
+        vc.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "square.and.pencil"), tag: 1)
         return vc
     }()
     
@@ -25,7 +33,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [viewController, searchViewController]
+        viewControllers = [viewController, cardCreateViewController, searchViewController]
 
     }
    
