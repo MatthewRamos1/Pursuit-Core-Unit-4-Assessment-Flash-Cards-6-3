@@ -11,6 +11,9 @@
 		0C4852F023F30A4100789955 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0C4852EF23F30A4100789955 /* ImageKit */; };
 		0C4852F223F30C3500789955 /* CardCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4852F123F30C3500789955 /* CardCreateViewController.swift */; };
 		0C4852F523F30F5000789955 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4852F423F30F5000789955 /* CardData.swift */; };
+		0C4852F823F313A000789955 /* FlashCardAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4852F723F313A000789955 /* FlashCardAPIClient.swift */; };
+		0C4852FA23F316C200789955 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4852F923F316C200789955 /* SearchCell.swift */; };
+		0C4852FC23F32B1200789955 /* CreateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4852FB23F32B1200789955 /* CreateCardView.swift */; };
 		0C55B8A623F2FF26004C5B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55B8A523F2FF26004C5B92 /* TabBarController.swift */; };
 		0C55B8A923F300F4004C5B92 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55B8A823F300F4004C5B92 /* SearchViewController.swift */; };
 		5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239723F2EE39000AA216 /* AppDelegate.swift */; };
@@ -35,6 +38,9 @@
 		0C4852EC23F3042800789955 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0C4852F123F30C3500789955 /* CardCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreateViewController.swift; sourceTree = "<group>"; };
 		0C4852F423F30F5000789955 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
+		0C4852F723F313A000789955 /* FlashCardAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardAPIClient.swift; sourceTree = "<group>"; };
+		0C4852F923F316C200789955 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		0C4852FB23F32B1200789955 /* CreateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardView.swift; sourceTree = "<group>"; };
 		0C55B8A523F2FF26004C5B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0C55B8A823F300F4004C5B92 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5790239423F2EE39000AA216 /* Unit4Assessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unit4Assessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				0C4852EC23F3042800789955 /* SearchView.swift */,
+				0C4852FB23F32B1200789955 /* CreateCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -82,6 +89,14 @@
 				0C4852F423F30F5000789955 /* CardData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0C4852F623F3137800789955 /* Network Services */ = {
+			isa = PBXGroup;
+			children = (
+				0C4852F723F313A000789955 /* FlashCardAPIClient.swift */,
+			);
+			path = "Network Services";
 			sourceTree = "<group>";
 		};
 		0C55B8A723F2FF3A004C5B92 /* Controllers */ = {
@@ -116,6 +131,7 @@
 		5790239623F2EE39000AA216 /* Unit4Assessment */ = {
 			isa = PBXGroup;
 			children = (
+				0C4852F623F3137800789955 /* Network Services */,
 				0C4852F323F30F2D00789955 /* Models */,
 				0C4852EB23F3040B00789955 /* Views */,
 				0C55B8A723F2FF3A004C5B92 /* Controllers */,
@@ -124,6 +140,7 @@
 				579023A023F2EE3B000AA216 /* Assets.xcassets */,
 				579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */,
 				579023A523F2EE3B000AA216 /* Info.plist */,
+				0C4852F923F316C200789955 /* SearchCell.swift */,
 			);
 			path = Unit4Assessment;
 			sourceTree = "<group>";
@@ -244,12 +261,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C55B8A923F300F4004C5B92 /* SearchViewController.swift in Sources */,
+				0C4852FA23F316C200789955 /* SearchCell.swift in Sources */,
+				0C4852F823F313A000789955 /* FlashCardAPIClient.swift in Sources */,
 				5790239C23F2EE39000AA216 /* ViewController.swift in Sources */,
 				0C4852F223F30C3500789955 /* CardCreateViewController.swift in Sources */,
 				0C55B8A623F2FF26004C5B92 /* TabBarController.swift in Sources */,
 				5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */,
 				0C4852F523F30F5000789955 /* CardData.swift in Sources */,
 				0C4852ED23F3042800789955 /* SearchView.swift in Sources */,
+				0C4852FC23F32B1200789955 /* CreateCardView.swift in Sources */,
 				5790239A23F2EE39000AA216 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

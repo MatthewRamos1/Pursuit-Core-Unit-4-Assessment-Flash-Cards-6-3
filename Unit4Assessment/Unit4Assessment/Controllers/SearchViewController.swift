@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import DataPersistence
 
 class SearchViewController: UIViewController {
     
+    public var dataPersistence: DataPersistence<Card>!
     private var searchView = SearchView()
+    
+    private var cards = [Card]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +31,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        cards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
