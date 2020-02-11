@@ -34,10 +34,12 @@ class TabBarController: UITabBarController {
         return vc
     }()
     
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [viewController, cardCreateViewController, searchViewController]
+        viewControllers = [viewController, UINavigationController(rootViewController: cardCreateViewController), searchViewController]
 
     }
    

@@ -12,11 +12,16 @@ import DataPersistence
 class ViewController: UIViewController {
     
     public var dataPersistence: DataPersistence<Card>!
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-
-
+    private var mainView = MainView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    
 }
 

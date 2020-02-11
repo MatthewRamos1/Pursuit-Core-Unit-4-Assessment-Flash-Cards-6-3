@@ -29,6 +29,7 @@ class CreateCardView: UIView {
         return tv2
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -76,6 +77,7 @@ class CreateCardView: UIView {
             textView2.heightAnchor.constraint(equalTo: textView1.heightAnchor)
         ])
     }
+    
     
     
 
