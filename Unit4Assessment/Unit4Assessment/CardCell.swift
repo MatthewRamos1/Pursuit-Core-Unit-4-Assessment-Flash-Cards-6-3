@@ -15,6 +15,12 @@ protocol CardCellDelegate: AnyObject {
 
 class CardCell: UICollectionViewCell {
     
+    private lazy var questionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Question Prompt"
+        return label
+    }()
+    
     
     private lazy var longPressGesture: UILongPressGestureRecognizer = {
         let gesture = UILongPressGestureRecognizer()
@@ -45,16 +51,17 @@ class CardCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        
+        setupLabel()
+        setupMoreButton()
     }
     
     @objc
-    private func didLongPress(_ gestureRecognizer: UIGestureRecognizer) {
+    private func didLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if isShowingQuestion {
-            
+            questionLabel.text = (currentCard.facts.first ?? "") + (currentCard.facts.last ?? "")
             isShowingQuestion = false
         } else {
-            
+            questionLabel.text = currentCard.quizTitle
             isShowingQuestion = true
         }
     }
@@ -64,12 +71,29 @@ class CardCell: UICollectionViewCell {
         delegate?.didSelectMoreButton(self, currentCard)
     }
         
-    private func setup() {
-        
+    private func setupLabel() {
+        addSubview(questionLabel)
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
+    
+    private func setupMoreButton() {
+       addSubview(moreButton)
+        moreButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            moreButton.topAnchor.constraint(equalTo: topAnchor),
+            moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            moreButton.heightAnchor.constraint(equalToConstant: 40),
+            moreButton.widthAnchor.constraint(equalTo: heightAnchor)
+        ])
     }
     
     public func configureCell(card: Card) {
         currentCard = card
+        questionLabel.text = currentCard.quizTitle
     }
     
     

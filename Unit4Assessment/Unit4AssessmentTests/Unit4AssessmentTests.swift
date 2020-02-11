@@ -124,9 +124,8 @@ class Unit4AssessmentTests: XCTestCase {
         let expectedCardTitle = "What is the difference between a synchronous & an asynchronous task?"
         
         do {
-            let cardData = try JSONDecoder().decode(CardData.self, from: jsonData)
-            let cards = cardData.cards
-            let title = cards.first?.cardTitle ?? ""
+            let cards = try JSONDecoder().decode([Card].self, from: jsonData)
+            let title = cards.first?.quizTitle ?? ""
             XCTAssertEqual(title, expectedCardTitle)
         } catch {
             XCTFail("Error: \(error)")

@@ -12,19 +12,21 @@ class CreateCardView: UIView {
 
     public lazy var textField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "dfd"
+        tf.placeholder = "Type flash card question here"
         tf.borderStyle = .roundedRect
         return tf
     }()
     
     public lazy var textView1: UITextView = {
         let tv1 = UITextView()
+        tv1.text = "Quiz fact 1"
         tv1.backgroundColor = .lightGray
         return tv1
     }()
     
     public lazy var textView2: UITextView = {
         let tv2 = UITextView()
+        tv2.text = "Quiz fact 2"
         tv2.backgroundColor = .lightGray
         return tv2
     }()

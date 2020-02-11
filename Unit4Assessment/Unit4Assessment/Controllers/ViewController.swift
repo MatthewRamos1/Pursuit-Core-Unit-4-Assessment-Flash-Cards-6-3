@@ -45,8 +45,12 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath)
+        guard let cell = mainView.collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else {
+            fatalError("Error: Couldn't downcast cell")
+        }
+        let card = cards[indexPath.row]
         cell.backgroundColor = .white
+        cell.configureCell(card: card)
         return cell
     }
     

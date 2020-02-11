@@ -28,7 +28,7 @@ class CardCreateViewController: UIViewController {
     
     @objc
     func saveArticleButtonPressed(_ sender: UIBarButtonItem) {
-        let card = Card(id: "100", cardTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
+        let card = Card(id: "100", quizTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
         do {
             try dataPersistence.createItem(card)
             showAlert(title: "Success", message: "Flash card has been saved.")
