@@ -51,14 +51,14 @@ extension ViewController: CardCellDelegate {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { alertAction in
-            self.deleteArticle(card: card)
+            self.deleteCard(card: card)
         }
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)
         present(alertController, animated: true)
     }
     
-    private func deleteArticle(card: Card) {
+    private func deleteCard(card: Card) {
         guard let index = cards.firstIndex(of: card) else {
             return
         }

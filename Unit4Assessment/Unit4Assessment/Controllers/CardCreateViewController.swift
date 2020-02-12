@@ -28,8 +28,9 @@ class CardCreateViewController: UIViewController {
     
     @objc
     func saveCardButtonPressed(_ sender: UIBarButtonItem) {
-        let card = Card(id: "100", quizTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
+        let card = Card(id: "0", quizTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
         if dataPersistence.hasItemBeenSaved(card) {
+            showAlert(title: "Did Not Save", message: "This flash card already exists.")
             return
         } else {
             do {

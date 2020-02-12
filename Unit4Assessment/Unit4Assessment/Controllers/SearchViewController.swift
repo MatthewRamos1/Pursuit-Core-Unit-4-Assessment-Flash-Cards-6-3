@@ -52,8 +52,20 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: SearchCellDelegate {
     func didSelectSaveButton(_ searchCell: SearchCell, _ card: Card) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { alertAction in
+            self.saveCard(searchCell, card: card)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true)
+    }
+    
+    func saveCard (_ searchCell: SearchCell, card: Card) {
         let card = Card(id: searchCell.currentCard.id, quizTitle: searchCell.currentCard.quizTitle, facts: searchCell.currentCard.facts)
         if dataPersistence.hasItemBeenSaved(card) {
+            showAlert(title: "Did Not Save", message: "This flash card already exists.")
             return
         } else {
             do {
