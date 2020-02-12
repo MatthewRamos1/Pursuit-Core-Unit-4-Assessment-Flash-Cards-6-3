@@ -18,6 +18,8 @@ class CardCell: UICollectionViewCell {
     private lazy var questionLabel: UILabel = {
         let label = UILabel()
         label.text = "Question Prompt"
+        label.numberOfLines = 4
+        label.textAlignment = .center
         return label
     }()
     
@@ -53,16 +55,33 @@ class CardCell: UICollectionViewCell {
     private func commonInit() {
         setupLabel()
         setupMoreButton()
+        addGestureRecognizer(longPressGesture)
     }
     
     @objc
     private func didLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            return
+        }
         if isShowingQuestion {
-            questionLabel.text = (currentCard.facts.first ?? "") + (currentCard.facts.last ?? "")
+            animate(isShowingQuestion)
             isShowingQuestion = false
         } else {
-            questionLabel.text = currentCard.quizTitle
+            animate(isShowingQuestion)
             isShowingQuestion = true
+        }
+    }
+    
+    private func animate(_ input: Bool) {
+        let duration = 1.0
+        if input {
+            UIView.transition(with: self, duration: duration, options: [.transitionFlipFromRight], animations: {
+                self.questionLabel.text = (self.currentCard.facts.first ?? "") + "   " + (self.currentCard.facts.last ?? "")
+            }, completion: nil)
+        } else {
+            UIView.transition(with: self, duration: duration, options: [.transitionFlipFromLeft], animations: {
+                self.questionLabel.text = self.currentCard.quizTitle
+            }, completion: nil)
         }
     }
     
@@ -76,7 +95,9 @@ class CardCell: UICollectionViewCell {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
     }
     

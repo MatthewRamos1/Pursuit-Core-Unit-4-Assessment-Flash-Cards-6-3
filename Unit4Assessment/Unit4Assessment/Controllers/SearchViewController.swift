@@ -50,6 +50,25 @@ class SearchViewController: UIViewController {
 
 }
 
+extension SearchViewController: SearchCellDelegate {
+    func didSelectSaveButton(_ searchCell: SearchCell, _ card: Card) {
+        let card = Card(id: searchCell.currentCard.id, quizTitle: searchCell.currentCard.quizTitle, facts: searchCell.currentCard.facts)
+        if dataPersistence.hasItemBeenSaved(card) {
+            return
+        } else {
+            do {
+                try dataPersistence.createItem(card)
+                showAlert(title: "Success", message: "Flash card has been saved.")
+                
+            } catch {
+                showAlert(title: "Error", message: "Could not save article: \(error)")
+            }
+        }
+    }
+    
+    
+}
+
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         cards.count
@@ -62,6 +81,7 @@ extension SearchViewController: UICollectionViewDataSource {
         let card = cards[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(card: card)
+        cell.delegate = self
         return cell
     }
     

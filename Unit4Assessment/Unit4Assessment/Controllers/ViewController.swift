@@ -14,7 +14,11 @@ class ViewController: UIViewController {
     public var dataPersistence: DataPersistence<Card>!
     private let mainView = MainView()
     
-    private var cards = [Card]()
+    private var cards = [Card]() {
+        didSet {
+            mainView.collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,10 @@ class ViewController: UIViewController {
         mainView.collectionView.register(CardCell.self, forCellWithReuseIdentifier: "cardCell")
         fetchSavedCards()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchSavedCards()
     }
     
     override func loadView() {
@@ -38,6 +46,34 @@ class ViewController: UIViewController {
         }
     }
 
+extension ViewController: CardCellDelegate {
+    func didSelectMoreButton(_ cardCell: CardCell, _ card: Card) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { alertAction in
+            self.deleteArticle(card: card)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true)
+    }
+    
+    private func deleteArticle(card: Card) {
+        guard let index = cards.firstIndex(of: card) else {
+            return
+        }
+        do {
+            try dataPersistence.deleteItem(at: index)
+            fetchSavedCards()
+        } catch {
+            showAlert(title: "Error", message: "Couldn't delete item: \(error)")
+        }
+    }
+
+    
+    
+}
+
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,6 +87,7 @@ extension ViewController: UICollectionViewDataSource {
         let card = cards[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(card: card)
+        cell.delegate = self
         return cell
     }
     
