@@ -19,16 +19,17 @@ class CardCreateViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(saveCardButtonPressed(_:)))
         navigationItem.title = "Create Quiz"
+        createCardView.textFieldFact1.delegate = self
+        createCardView.textFieldFact2.delegate = self
     }
     
     override func loadView() {
         view = createCardView
     }
     
-    
     @objc
     func saveCardButtonPressed(_ sender: UIBarButtonItem) {
-        let card = Card(id: "0", quizTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
+        let card = Card(id: "0", quizTitle: createCardView.questionTextField.text ?? "", facts: [createCardView.textFieldFact1.text ?? "", createCardView.textFieldFact2.text ?? ""])
         if card.quizTitle == "" || card.facts.first == "" || card.facts.last == "" {
             showAlert(title: "Fields are not complete", message: "Please make sure all 3 fields have content")
             return
@@ -45,7 +46,14 @@ class CardCreateViewController: UIViewController {
                 showAlert(title: "Error", message: "Could not save article: \(error)")
             }
         }
-        
     }
-    
 }
+
+extension CardCreateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createCardView.textFieldFact1.resignFirstResponder()
+        createCardView.textFieldFact2.resignFirstResponder()
+        return true
+    }
+}
+
