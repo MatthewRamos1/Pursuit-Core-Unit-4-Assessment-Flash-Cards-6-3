@@ -17,6 +17,11 @@ class ViewController: UIViewController {
     private var cards = [Card]() {
         didSet {
             mainView.collectionView.reloadData()
+            if cards.isEmpty {
+                mainView.collectionView.backgroundView = EmptyView(title: "Saved Flash Cards", message: "You haven't saved any flash cards. Check out the search tab to look through preexisting questions, or use the create tab to create your own!")
+            } else {
+                mainView.collectionView.backgroundView = nil
+            }
         }
     }
     

@@ -19,6 +19,7 @@
 		0C48530223F342A300789955 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48530123F342A300789955 /* CardCell.swift */; };
 		0C55B8A623F2FF26004C5B92 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55B8A523F2FF26004C5B92 /* TabBarController.swift */; };
 		0C55B8A923F300F4004C5B92 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55B8A823F300F4004C5B92 /* SearchViewController.swift */; };
+		0C58FD7023F3A39E00FC3667 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58FD6F23F3A39E00FC3667 /* EmptyView.swift */; };
 		5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239723F2EE39000AA216 /* AppDelegate.swift */; };
 		5790239A23F2EE39000AA216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239923F2EE39000AA216 /* SceneDelegate.swift */; };
 		5790239C23F2EE39000AA216 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239B23F2EE39000AA216 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		0C48530123F342A300789955 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		0C55B8A523F2FF26004C5B92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0C55B8A823F300F4004C5B92 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0C58FD6F23F3A39E00FC3667 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		5790239423F2EE39000AA216 /* Unit4Assessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unit4Assessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5790239723F2EE39000AA216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5790239923F2EE39000AA216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				0C4852FF23F33E8600789955 /* MainView.swift */,
 				0C4852EC23F3042800789955 /* SearchView.swift */,
 				0C4852FB23F32B1200789955 /* CreateCardView.swift */,
+				0C58FD6F23F3A39E00FC3667 /* EmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C55B8A923F300F4004C5B92 /* SearchViewController.swift in Sources */,
+				0C58FD7023F3A39E00FC3667 /* EmptyView.swift in Sources */,
 				0C48530023F33E8600789955 /* MainView.swift in Sources */,
 				0C4852FA23F316C200789955 /* SearchCell.swift in Sources */,
 				0C4852F823F313A000789955 /* FlashCardAPIClient.swift in Sources */,
