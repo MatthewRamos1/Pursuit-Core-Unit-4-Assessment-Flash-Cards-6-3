@@ -29,6 +29,10 @@ class CardCreateViewController: UIViewController {
     @objc
     func saveCardButtonPressed(_ sender: UIBarButtonItem) {
         let card = Card(id: "0", quizTitle: createCardView.textField.text ?? "", facts: [createCardView.textView1.text, createCardView.textView2.text])
+        if card.quizTitle == "" || card.facts.first == "" || card.facts.last == "" {
+            showAlert(title: "Fields are not complete", message: "Please make sure all 3 fields have content")
+            return
+        }
         if dataPersistence.hasItemBeenSaved(card) {
             showAlert(title: "Did Not Save", message: "This flash card already exists.")
             return
