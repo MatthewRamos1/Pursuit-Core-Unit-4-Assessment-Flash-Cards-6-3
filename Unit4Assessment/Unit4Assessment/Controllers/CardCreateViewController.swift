@@ -19,6 +19,7 @@ class CardCreateViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(saveCardButtonPressed(_:)))
         navigationItem.title = "Create Quiz"
+        createCardView.questionTextField.delegate = self
         createCardView.textFieldFact1.delegate = self
         createCardView.textFieldFact2.delegate = self
     }
@@ -51,6 +52,7 @@ class CardCreateViewController: UIViewController {
 
 extension CardCreateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createCardView.questionTextField.resignFirstResponder()
         createCardView.textFieldFact1.resignFirstResponder()
         createCardView.textFieldFact2.resignFirstResponder()
         return true
